@@ -16,10 +16,12 @@ class Console(cmd.Cmd):
         self.debug = args.debug
         self.client = core.Client_Connection(args.ip, args.port, args.timeout)
         if not self.debug:
-            if (util.update(self.__module__)):
+            if util.update(self.__module__):
                 print 'Client has been updated. Please restart!\n'
-            if (self.client.update()):
+            if self.client.update():
                 print 'The core module has been updated! Please restart!\n'
+            if util.update(util.__name__):
+                print 'The util module has been updated! Please restart!\n'
         self.prompt = 'BlooClient: '
         if not self.client.has_bloostamp():
             print 'No bloostamp found, creating one!'

@@ -13,7 +13,6 @@ def update(module_name):
         module_name -- The __module__ member of an object.
     """
     module_name = get_name(module_name)
-    print module_name
     url = 'https://raw.github.com/jBrown91/BlooCoin_JB/master/src/{0}'.format(
         module_name)
     local, remote = None, None

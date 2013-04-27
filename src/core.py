@@ -5,9 +5,12 @@ import json
 import random
 import socket
 import hashlib
+import util
 
 
 class Client_Connection(object):
+
+    __slots__ = ['ip', 'port', 'retry_timeout']
 
     def __init__(self, ip='bloocoin.zapto.org', port=3122, retry_timeout=10):
         """
@@ -150,19 +153,8 @@ class Client_Connection(object):
         return self.send_request(commands)
 
     def update(self):
-        """Checks for core updates.
-            Returns a string description of the recieved data."""
-        commands = {'ver': self.ver,
-                    'cmd': 'update',
-                    'type': self.type}
-        res = {
-            '0': 'Your client is running the latest version!\n',
-            '1': 'A new version is available.'
-                 'It can be downloaded at\:n'
-                 'AddressHere\n',
-            '2': '\n'}
-        data = self.send_request(commands)
-        return 'Server seems to be offline!' if data is None else res[data[0]]
+        """Updates core from the git repository."""
+        return util.update(self.__module__)
 
     def generate_bloostamp(self):
         """Generates a new bloostamp"""

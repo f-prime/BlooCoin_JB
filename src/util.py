@@ -26,7 +26,8 @@ def update(module_name):
     if local != hashlib.md5(remote).hexdigest():
         with open(module_name, 'w') as f:
             f.write(remote)
-    return True
+        return True
+    return False
 
 
 def get_name(module):

@@ -110,7 +110,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-d', '--debug', action='store_true',
                         help='Enables debug mode... Dahhh!')
-    parser.add_argument('-i', '--ip', type=str, default='bloocoin.zapto.org',
+    parser.add_argument('-i', '--ip', type=str, default='server.bloocoin.org',
                         help='The BlooCoin server ip address.')
     parser.add_argument('-p', '--port', type=int, default=3122,
                         help='The port to connect to on the BlooCoin server.')
